@@ -9,6 +9,17 @@
       "16": "icon16.png",
       "48": "icon48.png"
    },
+   "content_scripts": [
+       {
+           "matches": ["*://grooveshark.com/*", "*://*.grooveshark.com/*"],
+           "js": [
+               "external/lodash.min.js",
+               "shared/common.js",
+               "frontend/loader.js"
+           ],
+           "run_at": "document_start"
+       }
+   ],
    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgBEgXvUKxId3DhjKBq8DsCKyrVSJd2yXl5PQCNwincAq621FCQJ1+dX7mzV+updo/k+/1nGFakfjEH6BGt5R/QMw6tL6Gdljt4HuphyKAyAWkHvPmcri3JRSQcugChjLPSocBPCvWZWSVDmK2dIQf0i8QqE4PcjTVlUb6+fc1SfA8wnOdwB6gZ8MNLxEb1p8rSV3DQ8DTUQeT+qM41EZ/aYrBoE3lYZv59yWilQ3g/y2B5QLor+dQeFgMIMCbLlQDEmxPslmiz+8oALtbGKDP+Oa3Ilbss/No8k80feTnP2PIJipTAotkT2gWeF25oPvo1Ilfg9Y1t2ldOIpGCdWeQIDAQAB",
    "manifest_version": 2,
    "name": "Grooveshark Automatic Radio Host",
@@ -16,6 +27,10 @@
    "permissions": [ "alarms", "tabs", "http://grooveshark.com/*" ],
    "short_name": "GS Bot",
    "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "1.8.0",
-   "web_accessible_resources": [ "content_script.js" ]
+   "version": "2.0.0",
+   "web_accessible_resources": [
+       "external/lodash.min.js",
+       "shared/common.js",
+       "frontend/bootstrapper.js"
+   ]
 }
