@@ -1,7 +1,13 @@
 {
    "background": {
       "persistent": false,
-      "scripts": [ "background.js" ]
+      "scripts": [
+          "external/lodash.min.js",
+          "shared/common.js",
+          "background/common.js",
+          "background/plugin_client.js",
+          "background/plugin_coordination.js"
+      ]
    },
    "description": "Create or takeover a broadcast with this bot, then enjoy what the bot can offer!",
    "icons": {
@@ -24,13 +30,30 @@
    "manifest_version": 2,
    "name": "Grooveshark Automatic Radio Host",
    "options_page": "options.html",
-   "permissions": [ "alarms", "tabs", "http://grooveshark.com/*" ],
+   "page_action": {
+       "default_icon": "icon48.png",
+       "default_title": "GS Broadcast Bot",
+       "default_popup": "remote_popup/popup.html"
+   },
+   "permissions": [
+       "alarms",
+       "tabs",
+       "*://grooveshark.com/*",
+       "*://*.grooveshark.com/*"
+   ],
    "short_name": "GS Bot",
    "update_url": "https://clients2.google.com/service/update2/crx",
    "version": "2.0.0",
+   "externally_connectable": {
+       "matches": [
+           "*://grooveshark.com/*",
+           "*://*.grooveshark.com/*"
+       ]
+   },
    "web_accessible_resources": [
        "external/lodash.min.js",
        "shared/common.js",
+       "frontend/plugin.js",
        "frontend/bootstrapper.js"
    ]
 }

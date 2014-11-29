@@ -21,11 +21,17 @@ GSBot.Utils.signalRequiresExtensionId();
 GSBot.Utils.spinWait(
     1000,
     function() {
-        return window.GS !== undefined;
+        return window.GS &&
+               window.GS.ready;
     },
     function() {
         window.GS.ready.done(function() {
-            alert('GrooveShark Object is Ready.');
+
+            debugger;
+
+            var plugin = GSBot.pluginInstance = new GSBot.Plugin();
+            plugin.init();
+
         });
     }
 );

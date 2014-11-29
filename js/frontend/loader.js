@@ -13,11 +13,14 @@ var GSBot = GSBot || {};
 
 (function(GSBot) {
 
+    var Constants = GSBot.Constants;
+
     GSBot.environment = 'content_script';
 
     var filesToLoad = [
         'external/lodash.min.js',
         'shared/common.js',
+        'frontend/plugin.js',
         'frontend/bootstrapper.js'
     ];
 
@@ -40,12 +43,12 @@ var GSBot = GSBot || {};
      */
     window.addEventListener('message', function(message) {
 
-        if (!message.data || !message.data.event || message.data.event != GSBot.Events.GET_EXTENSION_ID) return;
+        if (!message.data || !message.data.event || message.data.event != Constants.Events.GET_EXTENSION_ID) return;
 
         GSBot.Utils.log('Got request for Extension ID', true);
 
         window.postMessage({
-            event: GSBot.Events.EXTENSION_ID,
+            event: Constants.Events.EXTENSION_ID,
             extensionId: chrome.runtime.id
         }, "*")
     }, false);
